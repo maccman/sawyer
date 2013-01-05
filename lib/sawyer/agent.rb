@@ -1,5 +1,9 @@
-require 'faraday'
+require 'faraday/autoload'
 require 'uri_template'
+
+class Faraday::Env
+  attr_accessor :sawyer_started, :sawyer_ended
+end
 
 module Sawyer
   class Agent
@@ -97,8 +101,8 @@ module Sawyer
         end
         started = Time.now
       end
-      res.env[:sawyer_started] = started
-      res.env[:sawyer_ended] = Time.now
+      res.env.sawyer_started = started
+      res.env.sawyer_ended = Time.now
 
       Response.new self, res
     end

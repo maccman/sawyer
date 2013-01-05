@@ -34,11 +34,11 @@ module Sawyer
     end
 
     def timing
-      @timing ||= @env[:sawyer_ended] - @env[:sawyer_started]
+      @timing ||= @env.sawyer_ended - @env.sawyer_started
     end
 
     def time
-      @env[:sawyer_ended]
+      @env.sawyer_ended
     end
 
     def inspect
