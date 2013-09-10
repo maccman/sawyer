@@ -18,7 +18,7 @@ module Sawyer
       @attrs = {}
       data.each do |key, value|
         @_fields << key
-        @attrs[key.to_sym] = process_value(value) 
+        @attrs[key.to_sym] = process_value(value)
       end
       @_metaclass.send(:attr_accessor, *data.keys)
     end
@@ -90,7 +90,7 @@ module Sawyer
       elsif suffix.nil? && SPECIAL_METHODS.include?(attr_name)
         instance_variable_get "@_#{attr_name}"
       else
-        super
+        nil
       end
     end
 
